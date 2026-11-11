@@ -1,0 +1,204 @@
+{
+  "dataset": "synthetic (generate_dataset.py), duplicates removed within and across splits",
+  "n_train": 4971,
+  "n_val": 1367,
+  "n_test": 1356,
+  "n_duplicates_removed": 66,
+  "features": [
+    "event_count",
+    "guardduty_count",
+    "max_severity",
+    "mean_severity",
+    "sg_change_count",
+    "distinct_event_types",
+    "mean_event_gap_s"
+  ],
+  "seed": 42,
+  "best_params": {
+    "Baseline Mahalanobis": {},
+    "Isolation Forest": {
+      "max_samples": 1024
+    },
+    "LOF (novelty)": {
+      "n_neighbors": 20
+    },
+    "One-Class SVM": {
+      "nu": 0.1
+    }
+  },
+  "thresholds": {
+    "Baseline Mahalanobis": 6.09132,
+    "Isolation Forest": 0.61983,
+    "LOF (novelty)": 1.46511,
+    "One-Class SVM": -25.93921
+  },
+  "test_results": [
+    {
+      "detecteur": "Baseline Mahalanobis",
+      "seuil": 6.0913,
+      "precision": 0.7783,
+      "recall": 0.8778,
+      "f1": 0.8251,
+      "tn": 1131,
+      "fp": 45,
+      "fn": 22,
+      "tp": 158,
+      "alerts_per_10k": 1497.1,
+      "pr_auc": 0.9232,
+      "roc_auc": 0.9831,
+      "fit_s": 0.005,
+      "score_s": 0.0
+    },
+    {
+      "detecteur": "Isolation Forest",
+      "seuil": 0.6198,
+      "precision": 0.9034,
+      "recall": 0.8833,
+      "f1": 0.8933,
+      "tn": 1159,
+      "fp": 17,
+      "fn": 21,
+      "tp": 159,
+      "alerts_per_10k": 1297.9,
+      "pr_auc": 0.9518,
+      "roc_auc": 0.9896,
+      "fit_s": 0.609,
+      "score_s": 0.06
+    },
+    {
+      "detecteur": "LOF (novelty)",
+      "seuil": 1.4651,
+      "precision": 0.7403,
+      "recall": 0.7444,
+      "f1": 0.7424,
+      "tn": 1129,
+      "fp": 47,
+      "fn": 46,
+      "tp": 134,
+      "alerts_per_10k": 1334.8,
+      "pr_auc": 0.8481,
+      "roc_auc": 0.9588,
+      "fit_s": 0.127,
+      "score_s": 0.046
+    },
+    {
+      "detecteur": "One-Class SVM",
+      "seuil": -25.9392,
+      "precision": 0.9034,
+      "recall": 0.8833,
+      "f1": 0.8933,
+      "tn": 1159,
+      "fp": 17,
+      "fn": 21,
+      "tp": 159,
+      "alerts_per_10k": 1297.9,
+      "pr_auc": 0.9591,
+      "roc_auc": 0.9887,
+      "fit_s": 0.237,
+      "score_s": 0.079
+    },
+    {
+      "detecteur": "IF + règle (max_severity ≥ 6.4)",
+      "seuil": 0.6198,
+      "precision": 0.9034,
+      "recall": 0.8833,
+      "f1": 0.8933,
+      "tn": 1159,
+      "fp": 17,
+      "fn": 21,
+      "tp": 159,
+      "alerts_per_10k": 1297.9,
+      "pr_auc": null,
+      "roc_auc": null,
+      "fit_s": 0.609,
+      "score_s": null
+    }
+  ],
+  "recall_by_scenario": {
+    "Baseline Mahalanobis": {
+      "critical_single": 0.926,
+      "guardduty_burst": 0.981,
+      "mixed": 0.913,
+      "sg_tampering": 0.717
+    },
+    "Isolation Forest": {
+      "critical_single": 0.889,
+      "guardduty_burst": 1.0,
+      "mixed": 1.0,
+      "sg_tampering": 0.66
+    },
+    "LOF (novelty)": {
+      "critical_single": 0.37,
+      "guardduty_burst": 0.852,
+      "mixed": 0.87,
+      "sg_tampering": 0.717
+    },
+    "One-Class SVM": {
+      "critical_single": 0.852,
+      "guardduty_burst": 0.963,
+      "mixed": 0.978,
+      "sg_tampering": 0.736
+    },
+    "IF + règle": {
+      "critical_single": 0.889,
+      "guardduty_burst": 1.0,
+      "mixed": 1.0,
+      "sg_tampering": 0.66
+    }
+  },
+  "contamination": [
+    {
+      "detecteur": "Isolation Forest",
+      "contamination": "0%",
+      "PR-AUC": "0.953 ± 0.000",
+      "F1": "0.897 ± 0.000",
+      "rappel": "0.900",
+      "précision": "0.895"
+    },
+    {
+      "detecteur": "Isolation Forest",
+      "contamination": "1%",
+      "PR-AUC": "0.955 ± 0.001",
+      "F1": "0.886 ± 0.007",
+      "rappel": "0.880",
+      "précision": "0.892"
+    },
+    {
+      "detecteur": "Isolation Forest",
+      "contamination": "5%",
+      "PR-AUC": "0.937 ± 0.003",
+      "F1": "0.855 ± 0.010",
+      "rappel": "0.817",
+      "précision": "0.899"
+    },
+    {
+      "detecteur": "Baseline Mahalanobis",
+      "contamination": "0%",
+      "PR-AUC": "0.923 ± 0.000",
+      "F1": "0.825 ± 0.000",
+      "rappel": "0.878",
+      "précision": "0.778"
+    },
+    {
+      "detecteur": "Baseline Mahalanobis",
+      "contamination": "1%",
+      "PR-AUC": "0.920 ± 0.000",
+      "F1": "0.822 ± 0.002",
+      "rappel": "0.900",
+      "précision": "0.757"
+    },
+    {
+      "detecteur": "Baseline Mahalanobis",
+      "contamination": "5%",
+      "PR-AUC": "0.887 ± 0.001",
+      "F1": "0.808 ± 0.007",
+      "rappel": "0.812",
+      "précision": "0.807"
+    }
+  ],
+  "gate": {
+    "min_f1": 0.8,
+    "min_recall": 0.85,
+    "isolation_forest_passed": true
+  }
+}
